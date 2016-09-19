@@ -121,6 +121,14 @@ describe('truncate.js', function () {
     assert.equal(this.$fixture.html(), 'Some text <a href="/foo">with a… </a><a href="#">More</a>');
   });
 
+  it('truncates correctly when empty elements push content down', function () {
+    this.$fixture.html('Some text<ul><li>line 1</li><li>line 2</li><li>line 3</li><li>line 4</li></ul>');
+
+    this.run({lines: 1});
+
+    assert.equal(this.$fixture.html(), 'Some text<ul><li><a href="#">More</a></li></ul>');
+  });
+
   describe('when box sizing is border-box', function () {
     beforeEach(function () {
       this.$fixture.css('box-sizing', 'border-box');

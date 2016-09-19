@@ -76,7 +76,7 @@
       }
     }
 
-    return false;
+    return true;
   }
 
   /* Truncates, at the beginning, the text content of a node using binary search */
@@ -250,6 +250,11 @@
         } else {
           truncated = truncateNestedNode($child, $rootNode, $clipNode, options);
         }
+
+        // We didn't truncate anything, but we're still too big
+        if (!truncated && $rootNode.height() > options.maxHeight) {
+          $child.remove();
+        }
       }
 
       if (!truncated && $clipNode.length) {
@@ -298,6 +303,11 @@
           truncated = truncateTextContent($child, $rootNode, $clipNode, options);
         } else {
           truncated = truncateNestedNode($child, $rootNode, $clipNode, options);
+        }
+
+        // We didn't truncate anything, but we're still too big
+        if (!truncated && $rootNode.height() > options.maxHeight) {
+          $child.remove();
         }
       }
 
