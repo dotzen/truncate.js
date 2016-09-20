@@ -112,6 +112,15 @@ describe('truncate.js', function () {
     assert.equal(this.$fixture.html(), "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer too…");
   });
 
+  it('truncates correctly when inside <a> is point of truncation', function () {
+    this.$fixture.html('Some text <a href="/foo">with a link</a> some more text.');
+    this.$fixture.css('width', '165px');
+
+    this.run({lines: 1});
+
+    assert.equal(this.$fixture.html(), 'Some text <a href="/foo">with a… </a><a href="#">More</a>');
+  });
+
   describe('when box sizing is border-box', function () {
     beforeEach(function () {
       this.$fixture.css('box-sizing', 'border-box');
