@@ -255,7 +255,6 @@
       if (!truncated && $clipNode.length) {
         $clipNode.remove();
       }
-
     }
 
     return truncated;
@@ -305,7 +304,6 @@
       if (!truncated && $clipNode.length) {
         $clipNode.remove();
       }
-
     }
 
     return truncated;
@@ -514,7 +512,7 @@
      */
     collapse: function (retruncate) {
       this.isExplicitlyCollapsed = true;
-      
+
       if (this.isCollapsed) {
         return;
       }
