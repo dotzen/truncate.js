@@ -252,7 +252,7 @@
         }
 
         // We didn't truncate anything, but we're still too big
-        if (!truncated && $rootNode.height() > options.maxHeight) {
+        if (!truncated && $rootNode.height() > options.maxHeight && !$child.is('br')) {
           $child.remove();
         }
       }
